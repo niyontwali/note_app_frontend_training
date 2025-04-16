@@ -1,24 +1,20 @@
-import React from 'react';
-import Button from './components/Button';
-import Input from './components/Input';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// imports
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
-    <>
-      <div className='flex gap-4 justify-center'>
-        <Button title="Sign in" buttonBg="bg-red-500" />
-        <Button title="Register" />
-        <Button title="Logout" disabled />
-      </div>
-
-      <div className='mt-12 flex justify-center flex-col'>
-        <Input type='email' placeholder="Your Email" />
-        <Input type='password' placeholder="Your Password" />
-        <Input placeholder="Disabled Input" disabled={true} />
-        <Input type='file' placeholder="Upload a file" />
-        <Input type='date' placeholder="Pick a date" moreStyle="bg-red-500" />
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 };
 
