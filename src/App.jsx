@@ -4,12 +4,15 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import AuthGuard from "./authGuard";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route element={<AuthGuard />}>
+          <Route path="/" element={<Home />} />
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
@@ -17,5 +20,6 @@ const App = () => {
     </Router>
   );
 };
+;
 
 export default App;
